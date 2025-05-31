@@ -4,4 +4,7 @@
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/green</item>
     </style>
+    <style name="Theme.CarBookingApp" parent="Base.Theme.CarBookingApp">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
