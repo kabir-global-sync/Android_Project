@@ -36,7 +36,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.cardview)
+    implementation(libs.material.v1110)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -45,4 +46,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

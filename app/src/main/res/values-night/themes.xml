@@ -2,6 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CarBookingApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<!--         <item name="colorPrimary">#fff</item>-->
+    </style>
+    <style name="Theme.CarBookingApp" parent="Base.Theme.CarBookingApp">
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
