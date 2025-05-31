@@ -4,4 +4,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="login_page">Login Page</string>
+    <string name="checkboxText">Remember Me</string>
+    <string name="forgotpassText">Forgot Password?</string>
 </resources>
