@@ -33,6 +33,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="@string/checkboxText"
+        />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
@@ -42,21 +50,13 @@
         android:text="@string/login">
 
     </com.google.android.material.button.MaterialButton>
-    <TextView
-        android:id="@+id/textView"
+
+    <Button
+        android:id="@+id/forgetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
         android:text="@string/forgotpassText"
         android:textColor="#2D65EE"
-        android:textSize="16sp"/>
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/checkboxText"
-        android:layout_marginTop="-15dp"/>
-
-
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
 </LinearLayout>
