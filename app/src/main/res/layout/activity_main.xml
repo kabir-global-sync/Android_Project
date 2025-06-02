@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#ECE8E8"
-            android:fontFamily="@font/calibrib"
+            android:fontFamily="@font/googlesansbold"
             android:gravity="center"
             android:text="Make reservation"
             android:textColor="#575757"
@@ -40,6 +40,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="@string/pickadrstext"
+        android:fontFamily="@font/googlesansbold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -48,23 +49,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pickupaddressinputfieldid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Pick Up Address" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/pickadrstext"
+                android:fontFamily="@font/googlesansregular"
+                android:background="@android:color/transparent"
+                android:padding="5dp"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -74,6 +72,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="@string/pickdatetext"
+        android:fontFamily="@font/googlesansbold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickupaddresscardid" />
 
@@ -92,7 +91,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/hhmmyyyy"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:fontFamily="@font/googlesansregular"
+            android:textSize="15sp"
+            android:inputType="date|none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--fhsdkjfhsjkghkjdfg-->
@@ -111,10 +112,11 @@
         android:id="@+id/timepicktextid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesansbold"
         android:text="@string/picktimetext"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepicktextid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toEndOf="@+id/datepicktextid" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -133,7 +135,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/timePickBtnText"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:fontFamily="@font/googlesansregular"
+            android:textSize="15sp"
+            android:inputType="time|none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -143,8 +147,9 @@
         android:text="Pick Time"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
-        app:layout_constraintStart_toEndOf="@+id/datepickbuttonid" />
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toEndOf="@+id/datepickbuttonid"
+        />
 
     <TextView
         android:id="@+id/textView4"
@@ -154,6 +159,7 @@
         android:layout_marginTop="12dp"
         android:text="@string/dropadrstext"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/googlesansbold"
         app:layout_constraintTop_toBottomOf="@+id/datepickbuttonid" />
 
     <androidx.cardview.widget.CardView
@@ -166,15 +172,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Drop Off Address">
-
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dropoffaddressinputfieldid"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="match_parent"
+                android:hint="@string/dropadrstext"
+                android:fontFamily="@font/googlesansregular"
+                android:background="@android:color/transparent"
+                android:padding="5dp"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -185,6 +190,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/dropdatetext"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/googlesansbold"
         app:layout_constraintTop_toBottomOf="@+id/dropoffaddresscardid" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -202,7 +208,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/hhmmyyyy"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:fontFamily="@font/googlesansregular"
+            android:textSize="15sp"
+            android:inputType="date|none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -222,16 +230,18 @@
         android:text="Pick Time"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toEndOf="@+id/datepickbuttonid2" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
+        android:fontFamily="@font/googlesansbold"
         android:text="@string/droptimetext"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -250,7 +260,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/timePickBtnText"
             android:gravity="center"
-            android:textSize="15sp" />
+            android:fontFamily="@font/googlesansregular"
+            android:textSize="15sp"
+            android:inputType="time|none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -261,10 +273,10 @@
         android:hint="Select Car Type"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dropoffaddresscardid"
-        app:layout_constraintVertical_bias="0.513">
+        app:layout_constraintTop_toBottomOf="@+id/datepickbuttonid2"
+        app:layout_constraintVertical_bias="0.13">
 
         <AutoCompleteTextView
             android:id="@+id/autocompletetextid"
