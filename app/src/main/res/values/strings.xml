@@ -6,4 +6,14 @@
     <string name="login_page">Login Page</string>
     <string name="checkboxText">Remember Me</string>
     <string name="forgotpassText">Forgot Password?</string>
+    <string name="datePickBtnText">Pick Date</string>
+    <string name="timePickBtnText">Pick Time</string>
+    <string name="hhmmyyyy">DD/MM/YYYY</string>
+    <string name="pickadrstext">Pick Up Address</string>
+    <string name="pickdatetext">Pick Up Date</string>
+    <string name="picktimetext">Pick Up Time</string>
+
+    <string name="dropadrstext">Drop Off Address</string>
+    <string name="dropdatetext">Drop Off Date</string>
+    <string name="droptimetext">Drop Off Time</string>
 </resources>
