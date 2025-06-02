@@ -58,5 +58,6 @@
         android:text="@string/forgotpassText"
         android:textColor="#2D65EE"
         style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textAllCaps="false"
         />
 </LinearLayout>
