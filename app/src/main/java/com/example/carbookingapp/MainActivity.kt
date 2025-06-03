@@ -1,10 +1,15 @@
 //this page is where the user will perform the booking
 package com.example.carbookingapp
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import android.graphics.Typeface
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -16,16 +21,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    var carTypes = listOf("Toyota Corolla",
-        "Honda Civic",
-        "Hyundai Elantra",
-        "Toyota Camry",
-        "Honda Accord",
-        "Nissan Altima",
-        "Chevrolet Malibu",
-        "Kia Forte",
-        "Volkswagen Jetta",
-        "Ford Fusion")
+    val carTypes = mapOf(
+        "Toyota Corolla" to CarDetails("John Doe", "1234567890", "XYZ-1234"),
+        "Honda Civic" to CarDetails("Jane Smith", "2345678901", "ABC-5678"),
+        "Hyundai Elantra" to CarDetails("Mike Johnson", "3456789012", "DEF-9101"),
+        "Toyota Camry" to CarDetails("Sara White", "4567890123", "GHI-2345"),
+        "Honda Accord" to CarDetails("Tom Brown", "5678901234", "JKL-3456"),
+        "Nissan Altima" to CarDetails("Anna Blue", "6789012345", "MNO-4567"),
+        "Chevrolet Malibu" to CarDetails("Peter Black", "7890123456", "PQR-5678"),
+        "Kia Forte" to CarDetails("Lucy Gray", "8901234567", "STU-6789"),
+        "Volkswagen Jetta" to CarDetails("Emma Green", "9012345678", "VWX-7890"),
+        "Ford Fusion" to CarDetails("James Red", "0123456789", "YZA-8901")
+    )
+    val carNames = carTypes.keys.toList() // This is now List<String>
     lateinit var autoCompleteTextView: AutoCompleteTextView
     lateinit var adapterItems: ArrayAdapter<String>
     lateinit var namefieldId1: TextView
@@ -36,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var datepickbuttonid2: Button
     lateinit var timepickbuttonid: Button
     lateinit var timepickbuttonid2: Button
+    lateinit var carDetailsViewid: TextView
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        carDetailsViewid = findViewById(R.id.carDetailsViewid)
         namefieldId1 = findViewById<TextView>(R.id.namefieldId1)
         namefieldId2 = findViewById<TextView>(R.id.namefieldId2)
         namefieldId45 = findViewById<TextView>(R.id.namefieldId45)
@@ -69,18 +81,34 @@ class MainActivity : AppCompatActivity() {
         }
 
         autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autocompletetextid)
-        adapterItems = ArrayAdapter(this, R.layout.list_item, R.id.spinner_text, carTypes)
+        adapterItems = ArrayAdapter(this, R.layout.list_item, R.id.spinner_text, carNames)
         autoCompleteTextView.setAdapter(adapterItems)
 
 
 
         autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
             val selectedCar = parent.getItemAtPosition(position).toString()
-//            selectedItemTextView.text = "You selected: $selectedCar"
-            Log.d("MainActivity","Car Type: $selectedCar")
-            // TODO: the above thind
+            Log.d("MainActivity", "Car Type: $selectedCar")
 
+            val carDetails = carTypes[selectedCar]
+            val builder = SpannableStringBuilder()
+            carDetails?.let {
+//                carDetailsViewid.text = "Driver: ${it.DriverName}\nPhone: ${it.PhoneNumber}\nReg No: ${it.RegNo}"
+                builder.append("Driver: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append("${it.DriverName}\n")
+
+                builder.append("Phone: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append("${it.PhoneNumber}\n")
+
+                builder.append("Reg No: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append(it.RegNo)
+
+                carDetailsViewid.text = builder
+            } ?: run {
+                carDetailsViewid.text = "No details available for this car"
+            }
         }
+
     }
 }
 
