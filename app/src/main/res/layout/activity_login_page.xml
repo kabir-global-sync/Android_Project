@@ -40,6 +40,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"/>
+
+        <ImageButton
+            android:id="@+id/infoalertid"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            app:srcCompat="@android:drawable/ic_dialog_info"
+            android:scaleType="centerInside"
+            android:layout_marginTop="2dp"
+            app:tint="@color/md_theme_onErrorContainer" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
