@@ -18,10 +18,10 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".paymentActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LoginPageActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
