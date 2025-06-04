@@ -1,6 +1,5 @@
 //this page is where the user will perform the booking
 package com.example.carbookingapp
-
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -19,7 +18,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 class MainActivity : AppCompatActivity() {
     val carTypes = mapOf(
         "Toyota Corolla" to CarDetails("John Doe", "1234567890", "XYZ-1234"),
@@ -45,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var timepickbuttonid: Button
     lateinit var timepickbuttonid2: Button
     lateinit var carDetailsViewid: TextView
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,39 +76,27 @@ class MainActivity : AppCompatActivity() {
         timepickbuttonid2.setOnClickListener {
             showDateTimePicker(false,2)
         }
-
         autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autocompletetextid)
         adapterItems = ArrayAdapter(this, R.layout.list_item, R.id.spinner_text, carNames)
         autoCompleteTextView.setAdapter(adapterItems)
-
-
-
         autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
             val selectedCar = parent.getItemAtPosition(position).toString()
-            Log.d("MainActivity", "Car Type: $selectedCar")
-
             val carDetails = carTypes[selectedCar]
             val builder = SpannableStringBuilder()
             carDetails?.let {
-//                carDetailsViewid.text = "Driver: ${it.DriverName}\nPhone: ${it.PhoneNumber}\nReg No: ${it.RegNo}"
                 builder.append("Driver: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 builder.append("${it.DriverName}\n")
-
                 builder.append("Phone: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 builder.append("${it.PhoneNumber}\n")
-
                 builder.append("Reg No: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 builder.append(it.RegNo)
-
                 carDetailsViewid.text = builder
             } ?: run {
                 carDetailsViewid.text = "No details available for this car"
             }
         }
-
     }
 }
-
 private fun MainActivity.showDateTimePicker(what: Boolean,id:Int) {
     val calender = Calendar.getInstance()
     if(what) {
