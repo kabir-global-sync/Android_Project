@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
@@ -51,4 +51,5 @@
         <item name="colorMycolorContainer">@color/colorMycolorContainer</item>
         <item name="colorOnMycolorContainer">@color/colorOnMycolorContainer</item>
     </style>
+
 </resources>

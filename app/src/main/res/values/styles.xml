@@ -5,5 +5,11 @@
         <item name="android:textStyle">bold</item>
 <!--        <item name="android:textColor">@color/blueish</item>-->
     </style>
+    <!-- res/values/styles.xml -->
+    <style name="LoginButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/button_gradient</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:backgroundTint">@null</item>
+    </style>
 
 </resources>

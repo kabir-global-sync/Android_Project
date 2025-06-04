@@ -60,15 +60,16 @@
         android:layout_gravity="start"
         android:text="@string/checkboxText"
         />
-    <com.google.android.material.button.MaterialButton
+
+    <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="17sp"
-        android:text="@string/login">
-
-    </com.google.android.material.button.MaterialButton>
+        android:text="@string/login"
+        android:background="@drawable/button_gradient"
+        app:backgroundTint="@null"/>
 
     <Button
         android:id="@+id/forgetButton"
