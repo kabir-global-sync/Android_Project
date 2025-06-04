@@ -10,6 +10,8 @@
     <string name="timePickBtnText">Pick Time</string>
     <string name="hhmmyyyy">DD/MM/YYYY</string>
     <string name="hhmm">HH:MM</string>
+    <string name="mmyy">MM/YY</string>
+    <string name="cvv">CVV</string>
     <string name="pickadrstext">Pick Up Address</string>
     <string name="pickdatetext">Pick Up Date</string>
     <string name="picktimetext">Pick Up Time</string>

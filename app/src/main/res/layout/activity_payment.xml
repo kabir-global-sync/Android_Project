@@ -181,7 +181,8 @@
             android:id="@+id/expirydateid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="MM/YY" />
+            android:hint="@string/mmyy"
+            android:gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -209,7 +210,8 @@
             android:id="@+id/cvvcodeid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="CVV" />
+            android:hint="@string/cvv"
+            android:gravity="center"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
