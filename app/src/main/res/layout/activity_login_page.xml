@@ -69,6 +69,7 @@
         android:textSize="17sp"
         android:text="@string/login"
         android:background="@drawable/button_gradient"
+        android:textColor="#fff"
         app:backgroundTint="@null"/>
 
     <Button
@@ -78,6 +79,7 @@
         android:text="@string/forgotpassText"
         android:textColor="#2D65EE"
         style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textSize="15sp"
         android:textAllCaps="false"
         />
 

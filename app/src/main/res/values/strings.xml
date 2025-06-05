@@ -19,4 +19,5 @@
     <string name="dropadrstext">Drop Off Address</string>
     <string name="dropdatetext">Drop Off Date</string>
     <string name="droptimetext">Drop Off Time</string>
+    <string name="welcomemsg">Welcome</string>
 </resources>
