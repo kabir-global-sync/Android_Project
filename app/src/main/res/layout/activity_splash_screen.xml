@@ -31,4 +31,19 @@
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         android:textSize="40sp"
         android:fontFamily="@font/googlesansbold"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarid"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="366dp"
+        android:layout_height="30dp"
+        android:alpha="1"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.775" />
 </androidx.constraintlayout.widget.ConstraintLayout>
