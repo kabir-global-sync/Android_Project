@@ -20,4 +20,7 @@
     <string name="dropdatetext">Drop Off Date</string>
     <string name="droptimetext">Drop Off Time</string>
     <string name="welcomemsg">Welcome</string>
+    <string name="make_reservation">Make reservation</string>
+    <string name="select_car_type">Select Car Type</string>
+    <string name="reserve_ride">Reserve Ride</string>
 </resources>

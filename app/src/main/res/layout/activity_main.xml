@@ -28,7 +28,7 @@
             android:background="#ECE8E8"
             android:fontFamily="@font/googlesansbold"
             android:gravity="center"
-            android:text="Make reservation"
+            android:text="@string/make_reservation"
             android:textColor="#575757"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
@@ -252,7 +252,7 @@
         android:layout_width="389dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:hint="Select Car Type"
+        android:hint="@string/select_car_type"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -264,9 +264,7 @@
             android:id="@+id/autocompletetextid"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:inputType="none">
-
-        </AutoCompleteTextView>
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -286,7 +284,7 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         android:background="@drawable/rect_button"
-        android:text="Reserve Ride"
+        android:text="@string/reserve_ride"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.556"

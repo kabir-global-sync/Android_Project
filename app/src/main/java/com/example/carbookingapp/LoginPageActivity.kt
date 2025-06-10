@@ -17,9 +17,7 @@ class LoginPageActivity : AppCompatActivity() {
             val username = binding.editUsername.text.toString()
             val password = binding.editPassword.text.toString()
             val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*])[A-Za-z\\d!@#\$%^&*]{8,}$")
-//            if(username.length>=7 && password.matches(passwordRegex)){
-            if(username.length>=7 && password=="1234"){
-//                Toast.makeText(this,"Success!",Toast.LENGTH_LONG).show()
+            if(username.length>=7 && password.matches(passwordRegex)){
                 val intent = Intent(this@LoginPageActivity, MainActivity::class.java)
                 startActivity(intent)
             }else{
