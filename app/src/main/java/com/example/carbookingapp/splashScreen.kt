@@ -26,11 +26,6 @@ class splashScreen : AppCompatActivity() {
         }
         progressBar = findViewById<ProgressBar>(R.id.progressBarid)
         simulateProgress()
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            startActivity(Intent(this, LoginPageActivity::class.java))
-//            finish() // Close splash activity
-//        },1000)
-
     }
     fun simulateProgress(){
         val handler = Handler(Looper.getMainLooper())

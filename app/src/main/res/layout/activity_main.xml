@@ -49,8 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="8dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="15dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
 
@@ -95,10 +95,12 @@
 
     <Button
         android:id="@+id/datepickbuttonid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_width="120dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
+        style="@style/CustomButton"
+        android:background="@drawable/rect_button"
         android:text="@string/datePickBtnText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namefieldId1" />
@@ -129,12 +131,14 @@
 
     <Button
         android:id="@+id/timepickbuttonid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CustomButton"
+        android:layout_width="120dp"
+        android:layout_height="39dp"
+        android:background="@drawable/rect_button"
         android:text="@string/timePickBtnText"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintHorizontal_bias="0.751"
         app:layout_constraintStart_toEndOf="@+id/datepickbuttonid" />
 
     <TextView
@@ -153,8 +157,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="8dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="15dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
@@ -195,24 +199,28 @@
 
     <Button
         android:id="@+id/datepickbuttonid2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_width="120dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
+        style="@style/CustomButton"
         android:text="@string/datePickBtnText"
+        android:background="@drawable/rect_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namefieldId44" />
 
+
     <Button
         android:id="@+id/timepickbuttonid2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CustomButton"
+        android:layout_width="120dp"
+        android:layout_height="39dp"
+        android:background="@drawable/rect_button"
         android:text="@string/timePickBtnText"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintHorizontal_bias="0.751"
         app:layout_constraintStart_toEndOf="@+id/datepickbuttonid2" />
-
 
     <TextView
         android:id="@+id/textView11"
@@ -274,9 +282,9 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="325dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_margin="10dp"
         android:background="@drawable/rect_button"
         android:text="Reserve Ride"
         app:layout_constraintBottom_toBottomOf="parent"

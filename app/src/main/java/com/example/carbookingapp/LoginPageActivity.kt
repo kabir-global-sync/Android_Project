@@ -1,5 +1,6 @@
 package com.example.carbookingapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -15,10 +16,14 @@ class LoginPageActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener{
             val username = binding.editUsername.text.toString()
             val password = binding.editPassword.text.toString()
-            if(username == "Fateh" && password == "12345"){
-                Toast.makeText(this,"Success!",Toast.LENGTH_LONG).show()
+            val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*])[A-Za-z\\d!@#\$%^&*]{8,}$")
+//            if(username.length>=7 && password.matches(passwordRegex)){
+            if(username.length>=7 && password=="1234"){
+//                Toast.makeText(this,"Success!",Toast.LENGTH_LONG).show()
+                val intent = Intent(this@LoginPageActivity, MainActivity::class.java)
+                startActivity(intent)
             }else{
-                Toast.makeText(this,"Invalid!",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Invalid Credentials!",Toast.LENGTH_LONG).show()
             }
         }
         val infoButton = findViewById<ImageButton>(R.id.infoalertid)

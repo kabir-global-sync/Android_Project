@@ -12,4 +12,11 @@
         <item name="android:backgroundTint">@null</item>
     </style>
 
+    <style name="CustomButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#ffdbd1</item>
+        <item name="fontFamily">@font/googlesansbold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
 </resources>
