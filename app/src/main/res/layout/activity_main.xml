@@ -46,7 +46,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/pickupaddresscardid"
-        android:layout_width="match_parent"
+        android:layout_width="299dp"
         android:layout_height="50dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="3dp"
@@ -154,7 +154,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/dropoffaddresscardid"
-        android:layout_width="match_parent"
+        android:layout_width="299dp"
         android:layout_height="50dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="3dp"
@@ -323,4 +323,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/picklocationbtnid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/open_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="3dp"
+        style="@style/mapbutton"
+        android:background="@drawable/rect_button"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toEndOf="@+id/dropoffaddresscardid"
+        app:layout_constraintTop_toBottomOf="@+id/timepickbuttonid" />
+
+    <Button
+        android:id="@+id/droplocationbtnid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="3dp"
+        android:text="@string/open_map"
+        style="@style/mapbutton"
+        android:background="@drawable/rect_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toEndOf="@+id/pickupaddresscardid"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

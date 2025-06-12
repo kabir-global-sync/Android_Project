@@ -17,6 +17,16 @@
         <item name="fontFamily">@font/googlesansbold</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">#000</item>
+        <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="mapbutton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#E9B7B9</item>
+        <item name="fontFamily">@font/googlesansbold</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#3A3A3A</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
 
 </resources>
