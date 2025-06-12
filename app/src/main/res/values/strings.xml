@@ -23,4 +23,6 @@
     <string name="make_reservation">Make reservation</string>
     <string name="select_car_type">Select Car Type</string>
     <string name="reserve_ride">Reserve Ride</string>
+    <string name="contact">Contact</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

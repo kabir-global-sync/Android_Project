@@ -33,7 +33,7 @@ class splashScreen : AppCompatActivity() {
         val maxProgress=100
         val runnable = object:Runnable{
             override fun run() {
-                progress += 5
+                progress += 10
                 if (progress <= maxProgress) {
                     progressBar.progress = progress
                     handler.postDelayed(this, progressUpdateInterval)
