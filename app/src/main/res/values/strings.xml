@@ -26,4 +26,5 @@
     <string name="contact">Contact</string>
     <string name="phone_number">Phone Number</string>
     <string name="open_map">Open Map</string>
+    <string name="myloc">I\'m Here</string>
 </resources>

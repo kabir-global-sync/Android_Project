@@ -1,22 +1,34 @@
 //this page is where the user will perform the booking
 package com.example.carbookingapp
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.pm.PackageManager
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.graphics.Typeface
+import android.location.Geocoder
+import android.os.Looper
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresPermission
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.carbookingapp.databinding.ActivityMainBinding
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     val carTypes = mapOf(
@@ -78,6 +90,65 @@ class MainActivity : AppCompatActivity() {
                 binding.carDetailsViewid.text = "No details available for this car"
             }
         }
+
+        binding.droplocationbtnid.setOnClickListener {
+            if (
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED
+            ) {
+                getLocation()
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION),
+                    102
+                )
+            }
+        }
+
+    }
+    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 102 && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+            getLocation()
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+    fun getLocation() {
+        val fused = LocationServices.getFusedLocationProviderClient(this)
+        val request = LocationRequest.Builder(
+            LocationRequest.PRIORITY_HIGH_ACCURACY,
+            1000
+        ).build()
+
+        val callback = object: LocationCallback() {
+            override fun onLocationResult(result: LocationResult) {
+                val location = result.lastLocation
+                val geocoder = Geocoder(this@MainActivity, Locale.getDefault())
+                if(location!=null) {
+                    val locationDetails = geocoder.getFromLocation(
+                        location.latitude, location.longitude, 1
+                    )
+                    val output = "Locality:"+ locationDetails?.get(0)?.getAddressLine(0)
+                    binding.pickupaddressinputfieldid.setText(output)
+                }
+                super.onLocationResult(result)
+            }
+        }
+
+        fused.requestLocationUpdates(
+            request,
+            callback,
+            Looper.getMainLooper()
+        )
     }
 }
 private fun MainActivity.showDateTimePicker(what: Boolean,id:Int) {

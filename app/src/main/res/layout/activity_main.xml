@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/pickadrstext"
+                android:textSize="13sp"
                 android:fontFamily="@font/googlesansregular"
                 android:background="@android:color/transparent"
                 android:padding="5dp"/>
@@ -154,7 +155,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/dropoffaddresscardid"
-        android:layout_width="299dp"
+        android:layout_width="404dp"
         android:layout_height="50dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="3dp"
@@ -162,14 +163,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dropoffaddressinputfieldid"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/dropadrstext"
-                android:fontFamily="@font/googlesansregular"
-                android:background="@android:color/transparent"
-                android:padding="5dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dropoffaddressinputfieldid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/googlesansregular"
+            android:hint="@string/dropadrstext"
+            android:padding="5dp"
+            android:textSize="13sp" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -274,6 +276,7 @@
         android:hint="@string/phone_number"
         android:inputType="phone"
         android:maxLength="10"
+        android:textSize="13sp"
         android:fontFamily="@font/googlesansregular"
         android:background="@android:color/transparent"
         android:padding="5dp"/>
@@ -325,19 +328,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
-        android:id="@+id/picklocationbtnid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/open_map"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="3dp"
-        style="@style/mapbutton"
-        android:background="@drawable/rect_button"
-        app:layout_constraintHorizontal_bias="0.452"
-        app:layout_constraintStart_toEndOf="@+id/dropoffaddresscardid"
-        app:layout_constraintTop_toBottomOf="@+id/timepickbuttonid" />
+
 
     <Button
         android:id="@+id/droplocationbtnid"
@@ -345,7 +336,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginStart="3dp"
-        android:text="@string/open_map"
+        android:text="@string/myloc"
         style="@style/mapbutton"
         android:background="@drawable/rect_button"
         app:layout_constraintEnd_toEndOf="parent"
