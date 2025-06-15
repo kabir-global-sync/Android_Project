@@ -26,7 +26,7 @@
             android:layout_height="81dp"
             android:background="#ECE8E8"
             android:gravity="center"
-            android:text="Pay Invoice"
+            android:text="@string/pay_invoice"
             android:textColor="#575757"
             android:textSize="25sp"
             android:typeface="monospace" />
@@ -78,10 +78,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/calibrib"
+        android:fontFamily="@font/googlesansbold"
         android:padding="2dp"
-        android:text="Payment Amount"
-        android:textSize="22sp"
+        android:text="@string/payment_amount"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,9 +105,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/calibrib"
-        android:text="Name on Card"
-        android:textSize="22sp"
+        android:fontFamily="@font/googlesansbold"
+        android:text="@string/name_on_card"
+        android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amountid" />
 
@@ -123,7 +123,8 @@
             android:id="@+id/namefieldId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Enter Name" />
+            android:hint="@string/enter_name"
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--akdsgjhkdfhgkdjfgkdf-->
@@ -134,9 +135,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/calibrib"
-        android:text="Number on Card"
-        android:textSize="22sp"
+        android:fontFamily="@font/googlesansbold"
+        android:text="@string/number_on_card"
+        android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
@@ -152,7 +153,9 @@
             android:id="@+id/numberfieldid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Enter Number" />
+            android:hint="@string/enter_number"
+            android:inputType="number"
+            android:maxLength="16"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -161,9 +164,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/calibrib"
-        android:text="Expiry Date"
-        android:textSize="22sp"
+        android:fontFamily="@font/googlesansbold"
+        android:text="@string/expiry_date"
+        android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -182,7 +185,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/mmyy"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:inputType="date"
+            android:maxLength="5"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -191,9 +196,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/calibrib"
-        android:text="Security Code"
-        android:textSize="22sp"
+        android:fontFamily="@font/googlesansbold"
+        android:text="@string/security_code"
+        android:textSize="19sp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -211,7 +216,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/cvv"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="3"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

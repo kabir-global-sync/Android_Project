@@ -27,4 +27,13 @@
     <string name="phone_number">Phone Number</string>
     <string name="open_map">Open Map</string>
     <string name="myloc">I\'m Here</string>
+    <string name="payment_amount">Payment Amount</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="number_on_card">Number on Card</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="security_code">Security Code</string>
+    <string name="pay_invoice">Pay Invoice</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="orderverify">Verify Your Order</string>
 </resources>

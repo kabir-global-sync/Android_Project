@@ -4,6 +4,8 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -107,6 +109,16 @@ class MainActivity : AppCompatActivity() {
                     102
                 )
             }
+        }
+        binding.makereservationbtnid.setOnClickListener {
+            val contactNum = binding.contactinputfieldid.text.toString()
+            val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("CONTACT_NUMBER", contactNum)
+            apply()
+        }
+            val intent = Intent(this, OTPVerificationActivity::class.java)
+            startActivity(intent)
         }
 
     }
