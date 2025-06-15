@@ -36,4 +36,5 @@
     <string name="enter_name">Enter Name</string>
     <string name="enter_number">Enter Number</string>
     <string name="orderverify">Verify Your Order</string>
+    <string name="make_payment">Make Payment</string>
 </resources>

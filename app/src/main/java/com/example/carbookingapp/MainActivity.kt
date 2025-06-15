@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.makereservationbtnid.setOnClickListener {
             val contactNum = binding.contactinputfieldid.text.toString()
-            val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+            val sharedPref = getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
             putString("CONTACT_NUMBER", contactNum)
             apply()

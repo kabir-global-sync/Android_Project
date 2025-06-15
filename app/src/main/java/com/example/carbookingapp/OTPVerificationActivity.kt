@@ -60,7 +60,7 @@ class OTPVerificationActivity : AppCompatActivity() {
             })
         }
 
-        val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE)
         val contactNumber = sharedPref.getString("CONTACT_NUMBER", null)
         var thistext = findViewById<TextView>(R.id.textView12)
         thistext.text = "Enter the OTP sent to +91-$contactNumber"
