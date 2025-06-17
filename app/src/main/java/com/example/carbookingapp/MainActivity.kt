@@ -25,11 +25,16 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.carbookingapp.databinding.ActivityMainBinding
+import com.example.carbookingapp.local_db.Customer
+import com.example.carbookingapp.local_db.CustomerDatabase
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -60,6 +65,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
 
         binding.datepickbuttonid.setOnClickListener {
             showDateTimePicker(true,1)
@@ -117,6 +124,13 @@ class MainActivity : AppCompatActivity() {
             putString("CONTACT_NUMBER", contactNum)
             apply()
         }
+            val pickAddress = binding.pickupaddressinputfieldid.text.toString()
+            val pickDate = binding.namefieldId1.text.toString()
+            val pickTime = binding.namefieldId2.text.toString()
+            val dropAddress = binding.dropoffaddressinputfieldid.text.toString()
+            val dropDate = binding.namefieldId44.text.toString()
+            val dropTime = binding.namefieldId45.text.toString()
+
             val intent = Intent(this, OTPVerificationActivity::class.java)
             startActivity(intent)
         }
@@ -149,7 +163,7 @@ class MainActivity : AppCompatActivity() {
                     val locationDetails = geocoder.getFromLocation(
                         location.latitude, location.longitude, 1
                     )
-                    val output = "Locality:"+ locationDetails?.get(0)?.getAddressLine(0)
+                    val output = locationDetails?.get(0)?.getAddressLine(0)
                     binding.pickupaddressinputfieldid.setText(output)
                 }
                 super.onLocationResult(result)

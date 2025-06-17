@@ -17,9 +17,10 @@ class LoginPageActivity : AppCompatActivity() {
             val username = binding.editUsername.text.toString()
             val password = binding.editPassword.text.toString()
             val passwordRegex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*])[A-Za-z\\d!@#\$%^&*]{8,}$")
-            if(username.length>=7 && password.matches(passwordRegex)){
+            if(username.length>=7 && password=="000"){
                 val intent = Intent(this@LoginPageActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this,"Invalid Credentials!",Toast.LENGTH_LONG).show()
             }

@@ -70,7 +70,7 @@ class OTPVerificationActivity : AppCompatActivity() {
 //            createNotification(generatedOTP)
 //        }, 5000)
         createNotification(generatedOTP)
-        Log.d("OTPVerificationActivity","OTP:$generatedOTP")
+        Toast.makeText(this,"Check Notification",Toast.LENGTH_LONG)
         verifyButton.setOnClickListener {
             val enteredOtp = otpBoxes.joinToString("") { it.text.toString() }
             if (enteredOtp == generatedOTP) {

@@ -8,4 +8,10 @@ object Constant {
     const val DROP_DATE = "DROPDATE"
     const val DROP_TIME = "DROPTIME"
     const val CONTACT = "CONTACT"
+
+    const val TITLE_KEY = "title"
+    const val CONTENT_KEY = "content"
+    const val FROM_KEY = "from"
+    const val LIST_ITEM_VALUE = "list"
+    const val CREATE_VALUE = "create"
 }
