@@ -25,10 +25,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
+//import androidx.lifecycle.lifecycleScope
 import com.example.carbookingapp.databinding.ActivityMainBinding
-import com.example.carbookingapp.local_db.Customer
-import com.example.carbookingapp.local_db.CustomerDatabase
+//import com.example.carbookingapp.local_db.Customer
+//import com.example.carbookingapp.local_db.CustomerDatabase
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult

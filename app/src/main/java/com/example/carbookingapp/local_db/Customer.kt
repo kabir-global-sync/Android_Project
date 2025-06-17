@@ -2,8 +2,8 @@ package com.example.carbookingapp.local_db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Time
-import java.util.Date
+//import java.sql.Time
+//import java.util.Date
 
 @Entity(tableName = "customer")
 data class Customer(
