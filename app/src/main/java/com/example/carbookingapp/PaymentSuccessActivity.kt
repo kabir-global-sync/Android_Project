@@ -4,21 +4,17 @@ import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 
 class PaymentSuccessActivity : AppCompatActivity() {
     companion object {
-        private const val SMS_PERMISSION_CODE = 101
         private const val CHANNEL_ID = "booking_confirmation_channel"
         private const val NOTIFICATION_ID = 1
     }
