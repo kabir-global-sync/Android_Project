@@ -37,4 +37,5 @@
     <string name="enter_number">Enter Number</string>
     <string name="orderverify">Verify Your Order</string>
     <string name="make_payment">Make Payment</string>
+    <string name="or_sign_up_using">or Sign Up using</string>
 </resources>
