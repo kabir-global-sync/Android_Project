@@ -99,7 +99,7 @@
         style="@style/CustomButton"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rect_button"
         android:text="@string/datePickBtnText"
@@ -121,7 +121,7 @@
         android:id="@+id/namefieldId2"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/textview_border"
         android:fontFamily="@font/googlesansregular"
         android:gravity="center"
@@ -139,7 +139,7 @@
         android:text="@string/timePickBtnText"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintStart_toEndOf="@+id/datepickbuttonid" />
 
     <TextView
@@ -199,18 +199,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
+
     <Button
         android:id="@+id/datepickbuttonid2"
         style="@style/CustomButton"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rect_button"
         android:text="@string/datePickBtnText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namefieldId44" />
-
 
     <Button
         android:id="@+id/timepickbuttonid2"
@@ -221,7 +221,7 @@
         android:text="@string/timePickBtnText"
         app:layout_constraintBaseline_toBaselineOf="@+id/datepickbuttonid2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toEndOf="@+id/datepickbuttonid2" />
 
     <TextView
