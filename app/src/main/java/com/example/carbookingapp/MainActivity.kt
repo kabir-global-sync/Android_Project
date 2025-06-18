@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     val carNames = carTypes.keys.toList() // This is now List<String>
     lateinit var autoCompleteTextView: AutoCompleteTextView
     lateinit var adapterItems: ArrayAdapter<String>
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,16 +70,16 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.datepickbuttonid.setOnClickListener {
-            showDateTimePicker(true,1)
+            showDateTimePicker(true, 1)
         }
         binding.datepickbuttonid2.setOnClickListener {
-            showDateTimePicker(true,2)
+            showDateTimePicker(true, 2)
         }
         binding.timepickbuttonid.setOnClickListener {
-            showDateTimePicker(false,1)
+            showDateTimePicker(false, 1)
         }
         binding.timepickbuttonid2.setOnClickListener {
-            showDateTimePicker(false,2)
+            showDateTimePicker(false, 2)
         }
         autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autocompletetextid)
         adapterItems = ArrayAdapter(this, R.layout.list_item, R.id.spinner_text, carNames)
@@ -88,11 +89,23 @@ class MainActivity : AppCompatActivity() {
             val carDetails = carTypes[selectedCar]
             val builder = SpannableStringBuilder()
             carDetails?.let {
-                builder.append("Driver: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append(
+                    "Driver: ",
+                    StyleSpan(Typeface.BOLD),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
                 builder.append("${it.DriverName}\n")
-                builder.append("Phone: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append(
+                    "Phone: ",
+                    StyleSpan(Typeface.BOLD),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
                 builder.append("${it.PhoneNumber}\n")
-                builder.append("Reg No: ", StyleSpan(Typeface.BOLD), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                builder.append(
+                    "Reg No: ",
+                    StyleSpan(Typeface.BOLD),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
                 builder.append(it.RegNo)
                 binding.carDetailsViewid.text = builder
             } ?: run {
@@ -111,19 +124,16 @@ class MainActivity : AppCompatActivity() {
             } else {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION),
+                    arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                    ),
                     102
                 )
             }
         }
         binding.makereservationbtnid.setOnClickListener {
             val contactNum = binding.contactinputfieldid.text.toString()
-            val sharedPref = getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE)
-        with(sharedPref.edit()) {
-            putString("CONTACT_NUMBER", contactNum)
-            apply()
-        }
             val pickAddress = binding.pickupaddressinputfieldid.text.toString()
             val pickDate = binding.namefieldId1.text.toString()
             val pickTime = binding.namefieldId2.text.toString()
@@ -131,74 +141,86 @@ class MainActivity : AppCompatActivity() {
             val dropDate = binding.namefieldId44.text.toString()
             val dropTime = binding.namefieldId45.text.toString()
 
-            val intent = Intent(this, OTPVerificationActivity::class.java)
-            startActivity(intent)
-        }
-
-    }
-    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == 102 && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
-            getLocation()
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
-    fun getLocation() {
-        val fused = LocationServices.getFusedLocationProviderClient(this)
-        val request = LocationRequest.Builder(
-            LocationRequest.PRIORITY_HIGH_ACCURACY,
-            1000
-        ).build()
-
-        val callback = object: LocationCallback() {
-            override fun onLocationResult(result: LocationResult) {
-                val location = result.lastLocation
-                val geocoder = Geocoder(this@MainActivity, Locale.getDefault())
-                if(location!=null) {
-                    val locationDetails = geocoder.getFromLocation(
-                        location.latitude, location.longitude, 1
-                    )
-                    val output = locationDetails?.get(0)?.getAddressLine(0)
-                    binding.pickupaddressinputfieldid.setText(output)
-                }
-                super.onLocationResult(result)
+            val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("pickupAddress", pickAddress) // Replace with actual data
+                putString("dropAddress", dropAddress)
+                putString("date", pickDate)
+                putString("time", pickTime)
+                putString("contact", contactNum)
+                apply()
             }
+
+                val intent = Intent(this, OTPVerificationActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+        @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+        override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+        ) {
+            if (requestCode == 102 && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+                getLocation()
+            }
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
 
-        fused.requestLocationUpdates(
-            request,
-            callback,
-            Looper.getMainLooper()
-        )
+        @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+        fun getLocation() {
+            val fused = LocationServices.getFusedLocationProviderClient(this)
+            val request = LocationRequest.Builder(
+                LocationRequest.PRIORITY_HIGH_ACCURACY,
+                1000
+            ).build()
+
+            val callback = object : LocationCallback() {
+                override fun onLocationResult(result: LocationResult) {
+                    val location = result.lastLocation
+                    val geocoder = Geocoder(this@MainActivity, Locale.getDefault())
+                    if (location != null) {
+                        val locationDetails = geocoder.getFromLocation(
+                            location.latitude, location.longitude, 1
+                        )
+                        val output = locationDetails?.get(0)?.getAddressLine(0)
+                        binding.pickupaddressinputfieldid.setText(output)
+                    }
+                    super.onLocationResult(result)
+                }
+            }
+
+            fused.requestLocationUpdates(
+                request,
+                callback,
+                Looper.getMainLooper()
+            )
+        }
     }
-}
-private fun MainActivity.showDateTimePicker(what: Boolean,id:Int) {
-    val calender = Calendar.getInstance()
-    if(what) {
-        val year = calender.get(Calendar.YEAR)
-        val month = calender.get(Calendar.MONTH)
-        val day = calender.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(
-            this,
-            { _, selectedYear, selectedMonth, selectedDay ->
-                val selectedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
-                if (id == 1) binding.namefieldId1.text = selectedDate
-                else if (id == 2) binding.namefieldId44.text = selectedDate
-            }, year, month, day
-        ).show()
-    }else {
-        val hour = calender.get(Calendar.HOUR)
-        val minute = calender.get(Calendar.MINUTE)
-        TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            Log.d("MainActivity","Time: $selectedHour:$selectedMinute")
-            val selectedTime = "$selectedHour:$selectedMinute"
-            if (id == 1) binding.namefieldId2.text = selectedTime
-            else if (id == 2) binding.namefieldId45.text = selectedTime
-        }, hour, minute, false).show()
+
+    private fun MainActivity.showDateTimePicker(what: Boolean, id: Int) {
+        val calender = Calendar.getInstance()
+        if (what) {
+            val year = calender.get(Calendar.YEAR)
+            val month = calender.get(Calendar.MONTH)
+            val day = calender.get(Calendar.DAY_OF_MONTH)
+            DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    val selectedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
+                    if (id == 1) binding.namefieldId1.text = selectedDate
+                    else if (id == 2) binding.namefieldId44.text = selectedDate
+                }, year, month, day
+            ).show()
+        } else {
+            val hour = calender.get(Calendar.HOUR)
+            val minute = calender.get(Calendar.MINUTE)
+            TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+                Log.d("MainActivity", "Time: $selectedHour:$selectedMinute")
+                val selectedTime = "$selectedHour:$selectedMinute"
+                if (id == 1) binding.namefieldId2.text = selectedTime
+                else if (id == 2) binding.namefieldId45.text = selectedTime
+            }, hour, minute, false).show()
+        }
     }
-}
