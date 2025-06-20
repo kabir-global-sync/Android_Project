@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         autoCompleteTextView.setOnItemClickListener { parent, view, position, id ->
             val selectedCar = parent.getItemAtPosition(position).toString()
             val carDetails = carTypes[selectedCar]
+
             val builder = SpannableStringBuilder()
             carDetails?.let {
                 builder.append(
@@ -140,87 +141,91 @@ class MainActivity : AppCompatActivity() {
             val dropAddress = binding.dropoffaddressinputfieldid.text.toString()
             val dropDate = binding.namefieldId44.text.toString()
             val dropTime = binding.namefieldId45.text.toString()
+            val carDetails = binding.carDetailsViewid.text.toString()
 
             val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
-                putString("pickupAddress", pickAddress) // Replace with actual data
-                putString("dropAddress", dropAddress)
-                putString("date", pickDate)
-                putString("time", pickTime)
-                putString("contact", contactNum)
+                putString(Constant.PICK_ADDRESS, pickAddress) // Replace with actual data
+                putString(Constant.PICK_DATE, pickDate) // Replace with actual data
+                putString(Constant.PICK_TIME, pickTime) // Replace with actual data
+                putString(Constant.DROP_ADDRESS, dropAddress)
+                putString(Constant.DROP_DATE, dropDate)
+                putString(Constant.DROP_TIME, dropTime)
+                putString(Constant.CONTACT, contactNum)
+                putString(Constant.CAR_DETAILS, carDetails)
                 apply()
             }
 
-                val intent = Intent(this, OTPVerificationActivity::class.java)
-                startActivity(intent)
-            }
-
-        }
-        @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
-        override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
-        ) {
-            if (requestCode == 102 && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
-                getLocation()
-            }
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            val intent = Intent(this, OTPVerificationActivity::class.java)
+            startActivity(intent)
         }
 
-        @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
-        fun getLocation() {
-            val fused = LocationServices.getFusedLocationProviderClient(this)
-            val request = LocationRequest.Builder(
-                LocationRequest.PRIORITY_HIGH_ACCURACY,
-                1000
-            ).build()
+    }
+    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 102 && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+            getLocation()
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
 
-            val callback = object : LocationCallback() {
-                override fun onLocationResult(result: LocationResult) {
-                    val location = result.lastLocation
-                    val geocoder = Geocoder(this@MainActivity, Locale.getDefault())
-                    if (location != null) {
-                        val locationDetails = geocoder.getFromLocation(
-                            location.latitude, location.longitude, 1
-                        )
-                        val output = locationDetails?.get(0)?.getAddressLine(0)
-                        binding.pickupaddressinputfieldid.setText(output)
-                    }
-                    super.onLocationResult(result)
+    @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
+    fun getLocation() {
+        val fused = LocationServices.getFusedLocationProviderClient(this)
+        val request = LocationRequest.Builder(
+            LocationRequest.PRIORITY_HIGH_ACCURACY,
+            1000
+        ).build()
+
+        val callback = object : LocationCallback() {
+            override fun onLocationResult(result: LocationResult) {
+                val location = result.lastLocation
+                val geocoder = Geocoder(this@MainActivity, Locale.getDefault())
+                if (location != null) {
+                    val locationDetails = geocoder.getFromLocation(
+                        location.latitude, location.longitude, 1
+                    )
+                    val output = locationDetails?.get(0)?.getAddressLine(0)
+                    binding.pickupaddressinputfieldid.setText(output)
                 }
+                super.onLocationResult(result)
             }
-
-            fused.requestLocationUpdates(
-                request,
-                callback,
-                Looper.getMainLooper()
-            )
         }
-    }
 
-    private fun MainActivity.showDateTimePicker(what: Boolean, id: Int) {
-        val calender = Calendar.getInstance()
-        if (what) {
-            val year = calender.get(Calendar.YEAR)
-            val month = calender.get(Calendar.MONTH)
-            val day = calender.get(Calendar.DAY_OF_MONTH)
-            DatePickerDialog(
-                this,
-                { _, selectedYear, selectedMonth, selectedDay ->
-                    val selectedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
-                    if (id == 1) binding.namefieldId1.text = selectedDate
-                    else if (id == 2) binding.namefieldId44.text = selectedDate
-                }, year, month, day
-            ).show()
-        } else {
-            val hour = calender.get(Calendar.HOUR)
-            val minute = calender.get(Calendar.MINUTE)
-            TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-                Log.d("MainActivity", "Time: $selectedHour:$selectedMinute")
-                val selectedTime = "$selectedHour:$selectedMinute"
-                if (id == 1) binding.namefieldId2.text = selectedTime
-                else if (id == 2) binding.namefieldId45.text = selectedTime
-            }, hour, minute, false).show()
-        }
+        fused.requestLocationUpdates(
+            request,
+            callback,
+            Looper.getMainLooper()
+        )
     }
+}
+
+private fun MainActivity.showDateTimePicker(what: Boolean, id: Int) {
+    val calender = Calendar.getInstance()
+    if (what) {
+        val year = calender.get(Calendar.YEAR)
+        val month = calender.get(Calendar.MONTH)
+        val day = calender.get(Calendar.DAY_OF_MONTH)
+        DatePickerDialog(
+            this,
+            { _, selectedYear, selectedMonth, selectedDay ->
+                val selectedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
+                if (id == 1) binding.namefieldId1.text = selectedDate
+                else if (id == 2) binding.namefieldId44.text = selectedDate
+            }, year, month, day
+        ).show()
+    } else {
+        val hour = calender.get(Calendar.HOUR)
+        val minute = calender.get(Calendar.MINUTE)
+        TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+            Log.d("MainActivity", "Time: $selectedHour:$selectedMinute")
+            val selectedTime = "$selectedHour:$selectedMinute"
+            if (id == 1) binding.namefieldId2.text = selectedTime
+            else if (id == 2) binding.namefieldId45.text = selectedTime
+        }, hour, minute, false).show()
+    }
+}

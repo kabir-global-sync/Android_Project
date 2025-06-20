@@ -38,4 +38,5 @@
     <string name="orderverify">Verify Your Order</string>
     <string name="make_payment">Make Payment</string>
     <string name="or_sign_up_using">or Sign Up using</string>
+    <string name="payment_successful">Payment Successful!</string>
 </resources>

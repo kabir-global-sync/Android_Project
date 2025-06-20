@@ -1,61 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="@color/white">
+    android:orientation="vertical"
+    android:gravity="center">
+    <!-- Success Icon -->
+    <ImageView
+        android:id="@+id/successIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/success"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Success Title -->
+    <TextView
+        android:id="@+id/successTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/payment_successful"
+        android:textSize="24sp"
+        android:fontFamily="@font/googlesansbold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/successIcon" />
+
+    <!-- Booking Details -->
+    <TextView
+        android:id="@+id/bookingDetailsTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/googlesansregular"
+        android:lineSpacingExtra="8sp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/successTitle" />
 
-        <!-- Success Icon -->
-        <ImageView
-            android:id="@+id/successIcon"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_success"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Success Title -->
-        <TextView
-            android:id="@+id/successTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Payment Successful!"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/successIcon" />
-
-        <!-- Booking Details -->
-        <TextView
-            android:id="@+id/bookingDetailsTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:lineSpacingExtra="8sp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/successTitle" />
-
-        <!-- Done Button -->
-        <Button
-            android:id="@+id/doneButton"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/black"
-            android:text="Done"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/bookingDetailsTextView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <!-- Done Button -->
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:text="Done"
+        app:layout_constraintTop_toBottomOf="@id/bookingDetailsTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

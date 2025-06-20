@@ -78,7 +78,8 @@ class OTPVerificationActivity : AppCompatActivity() {
 
         // Show immediate notification
         createNotification(generatedOTP)
-        Toast.makeText(this, "Check Notification for OTP", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Check Notification for OTP", Toast.LENGTH_SHORT
+        ).show()
 
         // Set up verify button click listener
         verifyButton.setOnClickListener {
@@ -110,7 +111,7 @@ class OTPVerificationActivity : AppCompatActivity() {
     private fun verifyOtp() {
         val enteredOtp = otpBoxes.joinToString("") { it.text.toString() }
         if (enteredOtp == generatedOTP) {
-            Toast.makeText(this, "OTP Verified Successfully", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "OTP Verified Successfully", Toast.LENGTH_SHORT).show()
             proceedToPayment()
         } else {
             Toast.makeText(this, "Incorrect OTP", Toast.LENGTH_SHORT).show()

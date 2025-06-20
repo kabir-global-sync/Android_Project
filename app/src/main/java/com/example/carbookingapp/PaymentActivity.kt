@@ -1,5 +1,6 @@
 package com.example.carbookingapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -23,6 +24,7 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentBinding
     private var paymentAmount: Double = 0.0
     private var selectedPaymentMethod: String? = null
+    var formattedNumber:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +36,10 @@ class PaymentActivity : AppCompatActivity() {
         setupPayButton()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupPaymentAmount() {
         paymentAmount = Random.nextDouble(20.0, 200.0)
-        val formattedNumber = DecimalFormat("#.00").format(paymentAmount)
+        formattedNumber = DecimalFormat("#.00").format(paymentAmount)
         binding.amountid.text = "$$formattedNumber"
     }
 
@@ -89,10 +92,9 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun savePaymentDetails() {
-        val sharedPref = getSharedPreferences("BookingPrefs", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         with(sharedPref.edit()) {
-            putString("paymentAmount", paymentAmount.toString())
-            putString("paymentMethod", selectedPaymentMethod)
+            putString(Constant.PAYMENT_DETAILS, formattedNumber.toString())
             apply()
         }
     }

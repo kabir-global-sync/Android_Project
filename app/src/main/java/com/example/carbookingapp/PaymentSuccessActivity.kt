@@ -24,14 +24,17 @@ class PaymentSuccessActivity : AppCompatActivity() {
         setContentView(R.layout.activity_payment_success)
 
         // Retrieve all booking details from SharedPreferences
-        val prefs = getSharedPreferences("BookingPrefs", MODE_PRIVATE)
+        val prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
         val bookingDetails = """
-            Pickup: ${prefs.getString("pickupAddress", "")}
-            Drop: ${prefs.getString("dropAddress", "")}
-            Date ${prefs.getString("date", "")}
-            Time ${prefs.getString("time", "")}
-            Contact: ${prefs.getString("contact", "")}
-            Payment: ${prefs.getString("paymentAmount", "")} via ${prefs.getString("paymentMethod", "")}
+            Pickup Address: ${prefs.getString(Constant.PICK_ADDRESS, null)}
+            Pickup Date: ${prefs.getString(Constant.PICK_DATE, null)}
+            Pickup Time: ${prefs.getString(Constant.PICK_TIME, null)}
+            Drop Address: ${prefs.getString(Constant.DROP_ADDRESS, null)}
+            Drop Date: ${prefs.getString(Constant.DROP_DATE, null)}
+            Drop Time: ${prefs.getString(Constant.DROP_TIME, null)}
+            Contact: ${prefs.getString(Constant.CONTACT, null)}
+            Payment: ${prefs.getString(Constant.PAYMENT_DETAILS, null)}
+            Car Details: ${prefs.getString(Constant.CAR_DETAILS, null)}
         """.trimIndent()
 
         // Update UI with booking details
